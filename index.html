@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Aria</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header>
+      <button
+        id="menuButton"
+        aria-expanded="false"
+        aria-controls="menuContent"
+        aria-haspopup="true"
+      >
+        Meny
+      </button>
+      <nav hidden id="menuContent" aria-labelledby="menuButton">
+        <ul>
+          <li><a href="#">Hem</a></li>
+          <li><a href="#">Om oss</a></li>
+          <li><a href="#">Tjänster</a></li>
+          <li><a href="#">Kontakt</a></li>
+        </ul>
+      </nav>
+    </header>
+    <main>
+      <button
+        id="openModalBtn"
+        aria-controls="accessibleModal"
+        aria-label="Open Modal 1"
+        aria-describedby="description1"
+      >
+        Öppna modalfönster 1
+      </button>
+
+      <div id="modalOverlay" aria-hidden="true"></div>
+
+      <div
+        hidden
+        id="accessibleModal"
+        aria-labelledby="modal_Title"
+        aria-modal="true"
+        role="modal"
+      >
+        <h2 id="modal_Title">Exempel på modalfönster</h2>
+        <p id="description1">Här är lite text i modalfönstret.</p>
+        <button id="closeModalBtn" tabindex="0">Stäng</button>
+      </div>
+
+      <button
+        id="openDialogBtn"
+        aria-controls="accessibleDialog"
+        aria-label="Open Modal 2"
+      >
+        Öppna modalfönster 2
+      </button>
+      <!-- <dialog> Kommer med flera inbyggda funktioner som minskar behovet av egen kod i js och css vilket leder till mindre mistag, <dialog> är även designad för att hjälpa till med tillgänglighet då den kan hantera focus bra och passar bra ihop med ARIA  -->
+
+      <dialog
+        id="accessibleDialog"
+        aria-labelledby="dialog_Title"
+        aria-hidden="true"
+        aria-describedby="description2"
+      >
+        <h2 id="dialog_Title">
+          Exempel på tillgängligt modalfönster med &lt;dialog&gt;
+        </h2>
+        <p id="description2">Här är innehållet i modalfönstret.</p>
+        <button id="closeDialogBtn">Stäng</button>
+      </dialog>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>
